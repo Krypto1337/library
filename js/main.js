@@ -23,6 +23,7 @@ body.append(navbar);
 //Add Books Button
 const btnContainer = document.createElement("div");
 const addBookBtn = document.createElement("button");
+btnContainer.classList.add("btnContainer");
 addBookBtn.classList.add("btn");
 addBookBtn.textContent = "Add book";
 navbar.after(btnContainer);

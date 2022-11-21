@@ -1,9 +1,14 @@
+:root {
+  --bg-color: #4da6ff;
+}
+
 .navbar {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  background-color: #87ceeb;
+  background-color: var(--bg-color);
   padding: 12px;
+  height: 3.125rem;
 }
 
 .btnContainer {
@@ -16,11 +21,91 @@
 .btn {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-weight: bold;
-  margin-top: 16px;
+  margin: 16px;
   width: 6rem;
   height: 2rem;
   border-radius: 12px;
   border: 0;
-  background-color: #87ceeb;
+  background-color: var(--bg-color);
   color: white;
+}
+
+.btn:hover {
+  opacity: 0.4;
+}
+
+.btn-close {
+  color: white;
+  background-color: red;
+}
+
+.bookContainer {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookDiv {
+  width: 375px;
+  height: 350px;
+  border: 6px solid var(--bg-color);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.bookContainer input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 12px 0;
+  display: inline-block;
+  border: 1px solid var(--bg-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.bookContainer input[type="checkbox"],
+.libDiv input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  bottom: 1px;
+  margin-left: 15px;
+}
+
+.libDiv input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 6px 0;
+  display: inline-block;
+  border: 1px solid #212729;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.libDiv {
+  margin: 10px;
+  gap: 50px;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  padding: 5px;
+  width: 300px;
+  height: 300px;
+  border: 4px solid var(--bg-color);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

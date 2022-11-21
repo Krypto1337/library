@@ -12,3 +12,10 @@ function addBookToLibrary() {
     console.log(element);
   });
 }
+
+//Create Navbar
+const body = document.querySelector("body");
+const navbar = document.createElement("div");
+navbar.classList.add("navbar");
+navbar.textContent = "My library";
+body.append(navbar);

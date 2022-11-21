@@ -1,10 +1,13 @@
 # library
+
 Online Library
 
-______
+---
 
 Simple library created with html,js and css.
 
 Your data isn't stored anyway.
 
-________
+---
+
+<a href="https://krypto1337.github.io/library/">Live preview</a>

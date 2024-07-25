@@ -1,0 +1,41 @@
+:root {
+	/** CSS DARK THEME PRIMARY COLORS */
+	--color-primary-500: #dcbbfe;
+
+	/** CSS DARK THEME MIXED SURFACE COLORS */
+	--color-surface-mixed-100: #211d25;
+	--color-surface-mixed-200: #363239;
+	--color-surface-mixed-300: #4c484f;
+	--color-surface-mixed-600: #949196;
+	/** EXAMPLES */
+}
+
+body {
+	background-color: var(--color-surface-mixed-100);
+	color: white;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin: 50px;
+}
+
+#card {
+	text-align: center;
+	width: 250px;
+	height: 300px;
+	background-color: var(--color-surface-mixed-200);
+	border-radius: 8px;
+}
+
+.btnBook {
+	background-color: var(--color-primary-500);
+	width: 150px;
+	height: 75px;
+	font-size: 24px;
+	font-weight: 700;
+	margin-left: 50px;
+	border-radius: 8px;
+	color: var(--color-surface-mixed-100);
+}

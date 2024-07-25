@@ -15,13 +15,18 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1216", "not read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
 
+const container = document.querySelector(".container");
+
 function displayBook(library) {
 	library.forEach((element) => {
-		console.log(element.info());
+		const card = document.createElement("div");
+		card.id = "card";
+		container.append(card);
+		card.textContent = element.info();
 	});
 }
 

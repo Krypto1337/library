@@ -31,3 +31,8 @@ function displayBook(library) {
 }
 
 displayBook(myLibrary);
+
+const btnAddBook = document.querySelector(".btnBook");
+btnAddBook.addEventListener("click", () => {
+	document.querySelector(".form-popup").style.display = "block";
+});

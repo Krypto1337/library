@@ -9,7 +9,75 @@
 	</head>
 	<body>
 		<div class="container"></div>
-		<button class="btnBook">Add book</button>
+		<button class="btn btnBook">Add book</button>
+		<div class="form-popup">
+			<form>
+				<div class="form-group">
+					<label>Title</label>
+					<input
+						type="text"
+						class="form-control"
+						name="title"
+						placeholder="Enter book title"
+					/>
+				</div>
+
+				<div class="form-group">
+					<label>Author</label>
+					<input
+						type="text"
+						class="form-control"
+						name="author"
+						placeholder="Enter book author"
+					/>
+				</div>
+
+				<div class="form-group">
+					<label>Pages</label>
+					<input
+						type="text"
+						class="form-control"
+						name="pages"
+						placeholder="Enter book pages"
+					/>
+				</div>
+
+				<div class="radio-group">
+					<label>Did you read the Book?</label>
+					<div class="radio-button">
+						<input
+							type="radio"
+							name="radio-group"
+							id="radio-yes"
+							class="radio-button_input"
+						/>
+						<label for="radio-yes" class="radio-button_label">
+							<span class="radio-button_custom">Yes</span>
+						</label>
+					</div>
+					<div class="radio-button">
+						<input
+							type="radio"
+							name="radio-group"
+							id="radio-no"
+							class="radio-button_input"
+						/>
+						<label for="radio-no" class="radio-button_label">
+							<span class="radio-button_custom">No</span>
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<input
+						type="submit"
+						class="btn btn-primary"
+						name="add_book"
+						value="Add"
+					/>
+				</div>
+			</form>
+		</div>
 		<script src="./js/main.js" defer></script>
 	</body>
 </html>

@@ -10,23 +10,43 @@ function Book(title, author, pages, read) {
 	};
 }
 
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Read");
+addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1216", "Not read");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Not read");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Read");
+
 function addBookToLibrary(title, author, pages, read) {
 	myLibrary.push(new Book(title, author, pages, read));
 }
-
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
-addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1216", "not read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "not read");
-
 const container = document.querySelector(".container");
-
+let i = 0;
 function displayBook(library) {
 	library.forEach((element) => {
 		const card = document.createElement("div");
+		const pTitle = document.createElement("p");
+		const pAuthor = document.createElement("p");
+		const pPages = document.createElement("p");
+		const btnToggleRead = document.createElement("button");
 		card.id = "card";
+		card.className = i;
+		i++;
 		container.append(card);
-		card.textContent = element.info();
+		pTitle.textContent = `Title: ${element.title}`;
+		card.appendChild(pTitle);
+		pAuthor.textContent = `Author: ${element.author}`;
+		card.appendChild(pAuthor);
+		pPages.textContent = `Pages: ${element.pages}`;
+		card.appendChild(pPages);
+		btnToggleRead.className = "btn";
+		btnToggleRead.textContent = element.read;
+		btnToggleRead.addEventListener("click", () => {
+			if (btnToggleRead.textContent == "Read") {
+				btnToggleRead.textContent = "Not read";
+			} else {
+				btnToggleRead.textContent = "Read";
+			}
+		});
+		card.appendChild(btnToggleRead);
 	});
 }
 
@@ -56,12 +76,23 @@ const radioNotRead = document.getElementById("radio-not-read");
 const formBtn = document.querySelector(".btn-primary");
 
 formBtn.addEventListener("click", () => {
-	console.log(inputTitle.value);
-	console.log(inputAuthor.value);
-	console.log(inputPages.value);
 	if (radioRead.checked) {
-		console.log("Read");
+		addBookToLibrary(
+			inputTitle.value,
+			inputAuthor.value,
+			inputPages.value,
+			"Read"
+		);
 	} else {
-		console.log("Not read");
+		addBookToLibrary(
+			inputTitle.value,
+			inputAuthor.value,
+			inputPages.value,
+			"Not read"
+		);
 	}
+	displayBook(myLibrary);
+	document.querySelector(".form-popup").style.display = "none";
+	document.querySelector(".btnDiv").style.display = "flex";
+	container.style.display = "grid";
 });

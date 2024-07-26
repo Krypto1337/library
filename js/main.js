@@ -35,4 +35,33 @@ displayBook(myLibrary);
 const btnAddBook = document.querySelector(".btnBook");
 btnAddBook.addEventListener("click", () => {
 	document.querySelector(".form-popup").style.display = "block";
+	document.querySelector(".btnDiv").style.display = "none";
+	container.style.display = "none";
+});
+
+//Form functionality
+
+//Prevent form-submit
+const form = document.getElementById("addBookForm");
+function handleForm(event) {
+	event.preventDefault();
+}
+form.addEventListener("submit", handleForm);
+
+const inputTitle = document.querySelector(".inputTitle");
+const inputAuthor = document.querySelector(".inputAuthor");
+const inputPages = document.querySelector(".inputPages");
+const radioRead = document.getElementById("radio-read");
+const radioNotRead = document.getElementById("radio-not-read");
+const formBtn = document.querySelector(".btn-primary");
+
+formBtn.addEventListener("click", () => {
+	console.log(inputTitle.value);
+	console.log(inputAuthor.value);
+	console.log(inputPages.value);
+	if (radioRead.checked) {
+		console.log("Read");
+	} else {
+		console.log("Not read");
+	}
 });

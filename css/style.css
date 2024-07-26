@@ -30,6 +30,12 @@ body {
 	border-radius: 8px;
 }
 
+.btnDiv {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .btn {
 	background-color: var(--color-primary-500);
 	width: 150px;
@@ -38,10 +44,6 @@ body {
 	font-weight: 700;
 	border-radius: 8px;
 	color: var(--color-surface-mixed-100);
-}
-
-.btnBook {
-	margin-left: 50px;
 }
 
 .form-popup {

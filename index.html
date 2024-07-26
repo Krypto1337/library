@@ -9,14 +9,16 @@
 	</head>
 	<body>
 		<div class="container"></div>
-		<button class="btn btnBook">Add book</button>
+		<div class="btnDiv">
+			<button class="btn btnBook">Add book</button>
+		</div>
 		<div class="form-popup">
-			<form>
+			<form id="addBookForm">
 				<div class="form-group">
 					<label>Title</label>
 					<input
 						type="text"
-						class="form-control"
+						class="form-control inputTitle"
 						name="title"
 						placeholder="Enter book title"
 					/>
@@ -26,7 +28,7 @@
 					<label>Author</label>
 					<input
 						type="text"
-						class="form-control"
+						class="form-control inputAuthor"
 						name="author"
 						placeholder="Enter book author"
 					/>
@@ -36,7 +38,7 @@
 					<label>Pages</label>
 					<input
 						type="text"
-						class="form-control"
+						class="form-control inputPages"
 						name="pages"
 						placeholder="Enter book pages"
 					/>
@@ -45,11 +47,11 @@
 					<div class="radio-button">
 						<input
 							name="radio-group"
-							id="radio2"
+							id="radio-read"
 							class="radio-button__input"
 							type="radio"
 						/>
-						<label for="radio2" class="radio-button__label">
+						<label for="radio-read" class="radio-button__label">
 							<span class="radio-button__custom"></span>
 
 							Read
@@ -58,11 +60,11 @@
 					<div class="radio-button">
 						<input
 							name="radio-group"
-							id="radio1"
+							id="radio-not-read"
 							class="radio-button__input"
 							type="radio"
 						/>
-						<label for="radio1" class="radio-button__label">
+						<label for="radio-not-read" class="radio-button__label">
 							<span class="radio-button__custom"></span>
 
 							Not read

@@ -1,11 +1,11 @@
 //Declerations
-const myLibrary = [];
+//Load default Books
+const myLibrary = [
+	new Book("The Hobbit", "J.R.R. Tolkien", "295", "Read"),
+	new Book("The Lord of the Rings", "J.R.R. Tolkien", "1216", "Not read"),
+	new Book("Eragon", "Christopher Paolini", "736", "Read"),
+];
 const container = document.querySelector(".container");
-const inputTitle = document.querySelector(".inputTitle");
-const inputAuthor = document.querySelector(".inputAuthor");
-const inputPages = document.querySelector(".inputPages");
-const radioRead = document.getElementById("radio-read");
-const radioNotRead = document.getElementById("radio-not-read");
 const form = document.getElementById("addBookForm");
 const formBtn = document.querySelector(".btn-primary");
 const btnAddBook = document.querySelector(".btnBook");
@@ -15,17 +15,21 @@ function Book(title, author, pages, read) {
 	this.author = author;
 	this.pages = pages;
 	this.read = read;
-	this.info = function () {
-		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-	};
 }
 
-function addBookToLibrary(title, author, pages, read) {
-	myLibrary.push(new Book(title, author, pages, read));
+function addBookToLibrary(book) {
+	//check if book already exists
+	const exists = myLibrary.some(
+		(b) => b.title === book.title && b.author === book.author
+	);
+	if (!exists) {
+		myLibrary.push(book);
+		displayBook();
+	}
 }
 
-function displayBook(library) {
-	library.forEach((element, index) => {
+function displayBook() {
+	myLibrary.forEach((element, index) => {
 		const card = document.createElement("div");
 		const btnContainer = document.createElement("div");
 		btnContainer.className = "btnCardContainer";
@@ -79,36 +83,27 @@ btnAddBook.addEventListener("click", () => {
 //Form functionality
 
 //Prevent form-submit
-function handleForm(event) {
-	event.preventDefault();
-}
-form.addEventListener("submit", handleForm);
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
 
-formBtn.addEventListener("click", () => {
+	const title = document.querySelector(".inputTitle").value;
+	const author = document.querySelector(".inputAuthor").value;
+	const pages = document.querySelector(".inputPages").value;
+	const radioRead = document.getElementById("radio-read").value;
+	let read = "";
 	if (radioRead.checked) {
-		addBookToLibrary(
-			inputTitle.value,
-			inputAuthor.value,
-			inputPages.value,
-			"Read"
-		);
+		read = "Read";
 	} else {
-		addBookToLibrary(
-			inputTitle.value,
-			inputAuthor.value,
-			inputPages.value,
-			"Not read"
-		);
+		read = "Not read";
 	}
-	displayBook(myLibrary);
+
+	const newBook = new Book(title, author, pages, read);
 	document.querySelector(".form-popup").style.display = "none";
 	document.querySelector(".btnDiv").style.display = "flex";
 	container.style.display = "grid";
+	addBookToLibrary(newBook);
 });
 
-//Default Books
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Read");
-addBookToLibrary("The Lord of the Rings", "J.R.R. Tolkien", "1216", "Not read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Not read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "295", "Read");
-displayBook(myLibrary);
+document.addEventListener("DOMContentLoaded", () => {
+	displayBook();
+});

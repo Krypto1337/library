@@ -5,7 +5,7 @@ const myLibrary = [
 	new Book("The Lord of the Rings", "J.R.R. Tolkien", "1216", "Not read"),
 	new Book("Eragon", "Christopher Paolini", "736", "Read"),
 ];
-const container = document.querySelector(".container");
+const library = document.querySelector(".library");
 const form = document.getElementById("addBookForm");
 const formBtn = document.querySelector(".btn-primary");
 const btnAddBook = document.querySelector(".btnBook");
@@ -31,46 +31,20 @@ function addBookToLibrary(book) {
 function displayBook() {
 	myLibrary.forEach((element, index) => {
 		const card = document.createElement("div");
-		const btnContainer = document.createElement("div");
-		btnContainer.className = "btnCardContainer";
-		const pTitle = document.createElement("p");
-		const pAuthor = document.createElement("p");
-		const pPages = document.createElement("p");
-		const btnToggleRead = document.createElement("button");
-		const btnRemoveBook = document.createElement("button");
-
 		card.id = "card";
 		card.dataset.index = index;
-		container.append(card);
 
-		pTitle.textContent = `Title: ${element.title}`;
-		card.appendChild(pTitle);
+		card.innerHTML = `
+		<p>Title: ${element.title}</p>
+		<p>Author: ${element.author}</p>
+		<p>Pages: ${element.pages}</p>
 
-		pAuthor.textContent = `Author: ${element.author}`;
-		card.appendChild(pAuthor);
-
-		pPages.textContent = `Pages: ${element.pages}`;
-		card.appendChild(pPages);
-		card.appendChild(btnContainer);
-
-		btnToggleRead.classList.add("btn", "btn-secondary", "btn-toggle-read");
-		btnToggleRead.textContent = element.read;
-		btnToggleRead.addEventListener("click", () => {
-			if (btnToggleRead.textContent === "Read") {
-				btnToggleRead.textContent = "Not read";
-			} else {
-				btnToggleRead.textContent = "Read";
-			}
-		});
-		btnRemoveBook.classList.add("btn", "btn-secondary", "btn-remove-book");
-		btnRemoveBook.textContent = "Remove";
-		btnRemoveBook.addEventListener("click", (e) => {
-			const index = e.target.closest(".btn-remove-book").dataset.index;
-			myLibrary.splice(index, 1);
-			displayBook(myLibrary);
-		});
-		btnContainer.appendChild(btnToggleRead);
-		btnContainer.appendChild(btnRemoveBook);
+		<div class="btnCardContainer">
+			<button class="btn btn-secondary btn-toggle-read">${element.read}</button>
+			<button class="btn btn-secondary btn-toggle-read">Remove</button>
+		</div>
+		`;
+		library.append(card);
 	});
 }
 

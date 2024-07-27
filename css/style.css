@@ -23,11 +23,22 @@ body {
 }
 
 #card {
-	text-align: center;
+	justify-self: center;
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: space-between;
 	width: 300px;
 	height: 350px;
 	background-color: var(--color-surface-mixed-200);
 	border-radius: 8px;
+}
+
+.btnCardContainer {
+	display: flex;
+	justify-content: center;
+	gap: 25px;
+	padding-bottom: 25px;
 }
 
 p {
@@ -50,6 +61,12 @@ p {
 	font-weight: 700;
 	border-radius: 8px;
 	color: var(--color-surface-mixed-100);
+}
+
+.btn-secondary {
+	width: 100px;
+	height: 33px;
+	font-size: 14px;
 }
 
 .form-popup {

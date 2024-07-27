@@ -8,7 +8,7 @@ const myLibrary = [
 const library = document.querySelector(".library");
 const form = document.getElementById("addBookForm");
 const formBtn = document.querySelector(".btn-primary");
-const btnAddBook = document.querySelector(".btnBook");
+const btnNewBook = document.querySelector(".btnNewBook");
 
 function Book(title, author, pages, read) {
 	this.title = title;
@@ -29,32 +29,51 @@ function addBookToLibrary(book) {
 }
 
 function displayBook() {
+	library.innerHTML = ``;
+	console.log(myLibrary);
 	myLibrary.forEach((element, index) => {
 		const card = document.createElement("div");
 		card.id = "card";
 		card.dataset.index = index;
 
 		card.innerHTML = `
-		<p>Title: ${element.title}</p>
-		<p>Author: ${element.author}</p>
-		<p>Pages: ${element.pages}</p>
-
+		<div class="infoContainer">
+			<p>Title: ${element.title}</p>
+			<p>Author: ${element.author}</p>
+			<p>Pages: ${element.pages}</p>
+		</div>
 		<div class="btnCardContainer">
 			<button class="btn btn-secondary btn-toggle-read">${element.read}</button>
-			<button class="btn btn-secondary btn-toggle-read">Remove</button>
+			<button class="btn btn-secondary btn-toggle-remove">Remove</button>
 		</div>
 		`;
 		library.append(card);
 	});
 }
 
-btnAddBook.addEventListener("click", () => {
+function toggleRead(e) {
+	const index = e.target.closest("#card").dataset.index;
+	if (myLibrary[index].read === "Read") {
+		myLibrary[index].read = "Not read";
+	} else {
+		myLibrary[index].read = "Read";
+	}
+	displayBook();
+}
+
+function removeBook(e) {
+	const index = e.target.closest("#card").dataset.index;
+	myLibrary.splice(index, 1);
+	displayBook();
+}
+
+//Change visibility of Form and Library
+
+btnNewBook.addEventListener("click", () => {
 	document.querySelector(".form-popup").style.display = "block";
 	document.querySelector(".btnDiv").style.display = "none";
-	container.style.display = "none";
+	library.style.display = "none";
 });
-
-//Form functionality
 
 //Prevent form-submit
 form.addEventListener("submit", (e) => {
@@ -74,10 +93,22 @@ form.addEventListener("submit", (e) => {
 	const newBook = new Book(title, author, pages, read);
 	document.querySelector(".form-popup").style.display = "none";
 	document.querySelector(".btnDiv").style.display = "flex";
-	container.style.display = "grid";
+	library.style.display = "grid";
 	addBookToLibrary(newBook);
+
+	form.reset();
 });
+
+//Display books when DOM loaded
 
 document.addEventListener("DOMContentLoaded", () => {
 	displayBook();
+
+	document.getElementById("library").addEventListener("click", (e) => {
+		if (e.target.closest(".btn-toggle-read")) {
+			toggleRead(e);
+		} else if (e.target.closest(".btn-toggle-remove")) {
+			removeBook(e);
+		}
+	});
 });

@@ -1,17 +1,8 @@
 //Declerations
-//Load default Books
 const library = document.querySelector(".library");
 const form = document.getElementById("addBookForm");
 const formBtn = document.querySelector(".btn-primary");
 const btnNewBook = document.querySelector(".btnNewBook");
-
-/*function Book(title, author, pages, read) {
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-}
-*/
 
 class Book {
 	constructor(title, author, pages, read) {
@@ -20,24 +11,9 @@ class Book {
 		this.pages = pages;
 		this.read = read;
 	}
-	set bookTitle(title) {
-		this.title = title;
-	}
-	set bookAuthor(author) {
-		this.author = author;
-	}
-	set bookPages(pages) {
-		this.pages = pages;
-	}
-	set bookRead(read) {
-		this.read = read;
-	}
-
-	get bookInfo() {
-		return this.title, this.author, this.pages, this.read;
-	}
 }
 
+//Declerations
 const myLibrary = [
 	new Book("The Hobbit", "J.R.R. Tolkien", "295", "Read"),
 	new Book("The Lord of the Rings", "J.R.R. Tolkien", "1216", "Not read"),
